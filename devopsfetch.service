@@ -1,0 +1,16 @@
+[Unit]
+Description=DevOps Fetch Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/devopsfetch -d
+Restart=always
+User=root
+Group=root
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=append:/var/log/devopsfetch.log
+StandardError=append:/var/log/devopsfetch_error.log
+SyslogIdentifier=devopsfetch
+
+[Install]
+WantedBy=multi-user.target
